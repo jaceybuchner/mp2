@@ -4,8 +4,7 @@ def player1_logic(coins, potions, foods, dungeon_map, self_position, other_agent
     # direction mappings
     directions = {'W': (0, -1), 'A': (-1, 0), 'S': (0, 1), 'D': (1, 0)}
 
-    # (lower weight = higher priority)
-    item_weights = {'coin': 1.0, 'potion': 0.8, 'food': 0.9}
+    # include all coins, potions, and foods
     all_items = coins + potions + foods
 
     # uniform cost search
@@ -23,7 +22,7 @@ def player1_logic(coins, potions, foods, dungeon_map, self_position, other_agent
 
         # if item at current spot
         if current_pos in all_items:
-            return path[0] # returns one of the following: W, A, S, D
+            return path[0] # returns either W, A, S, D
 
         # explore neighbors
         for move, (dx, dy) in directions.items():
